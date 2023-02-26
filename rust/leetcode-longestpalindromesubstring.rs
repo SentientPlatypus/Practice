@@ -19,18 +19,18 @@ impl Solution {
 
         let bytess = s.as_bytes();
         let mut left:usize = 0;
-        let mut right:usize = 1;
+        let mut right:usize = 0;
         let mut longest:String = String::from("");
         let mut charvec = Vec::new();
 
         while left < s.len() {
 
-            right = bytess.len() - 1;
+            right = bytess.len();
             while right > left {
+                right -= 1;
                 if bytess[left] == bytess[right] {
                     charvec.push(right);
                 }
-                right -= 1;
             }
 
             if s.len() == 1 {
