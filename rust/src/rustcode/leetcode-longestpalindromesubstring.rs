@@ -32,16 +32,10 @@ impl Solution {
                     charvec.push(right);
                 }
             }
-
-            if s.len() == 1 {
-                charvec.push(0)
-            }
             
-            // println!("{:#?}", charvec);
             for rindex in &charvec {
                 let mut substr = &bytess[left..rindex + 1];
                 let sub_string = String::from(&s[left..rindex + 1]);
-                // println!("str:{}, l:{}, r:{}", sub_string, left, rindex);
                 if Solution::verify_palindrome(substr) {
                     longest = if longest.len() >= sub_string.len() {longest} else {sub_string};
                     break;
