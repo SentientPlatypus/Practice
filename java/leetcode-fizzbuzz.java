@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class Solution {
+class leetcode_fizzbuzz {
     public List<String> fizzBuzz(int n) {
         ArrayList<String> r = new ArrayList();
         if (n == 1) {
@@ -21,5 +21,9 @@ class Solution {
             prev.add("" + n);
         }
         return prev;
+    }
+
+    public static void main(String cheese) {
+        System.out.println(cheese);
     }
 }
