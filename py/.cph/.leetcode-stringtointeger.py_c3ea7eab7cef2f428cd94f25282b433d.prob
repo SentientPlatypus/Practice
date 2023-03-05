@@ -1,0 +1,1 @@
+{"name":"Local: leetcode-stringtointeger","url":"w:\\Code\\Competitions\\Practice\\py\\leetcode-stringtointeger.py","tests":[{"id":1678045220304,"input":"    -1","output":"-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"w:\\Code\\Competitions\\Practice\\py\\leetcode-stringtointeger.py","group":"local","local":true}

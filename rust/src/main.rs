@@ -1,19 +1,8 @@
 
-
-#[derive(Debug)]
-struct Cli {
-    pattern: String,
-    path: std::path::PathBuf,
-}
-
-
+use std::io::{self, BufRead};
 fn main() {
-    let pattern: String = Default::default();
-    let path: String = Default::default();
-    let args = Cli {
-        pattern: pattern,
-        path: std::path::PathBuf::from(path),
-    };
-
-    println!("{:#?}, {:#?}", args.path, args.pattern);
+    let stdin = io::stdin();
+    for line in stdin.lock().lines() {
+        println!("{}", line.unwrap());
+    }
 }
