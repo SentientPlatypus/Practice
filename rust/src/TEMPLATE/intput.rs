@@ -1,7 +1,3 @@
-pub struct Solution {
-    n:u8,
-    s:String
-}
 
 
 
@@ -14,6 +10,10 @@ impl Solution {
 
 
 
+pub struct Solution {
+    n:u8,
+    s:String
+}
 
 use std::io;
 fn main() {
