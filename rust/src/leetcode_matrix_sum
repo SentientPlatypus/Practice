@@ -1,0 +1,19 @@
+impl Solution {
+    pub fn diagonal_sum(mat: Vec<Vec<i32>>) -> i32 {
+        let mut left:(usize, usize) = (0, 0);
+        let mut right:(usize, usize) = (0, mat.len() - 1);
+        let mut sum = 0;
+        for i in 0..mat.len() {
+            sum += mat[left.0][left.1];
+            if left != right {
+                sum += mat[right.0][right.1];
+            }
+
+            left.0 +=1;
+            left.1 += 1;
+            right.0 +=1;
+            right.1 -=1;
+        }
+        sum
+    }
+}
