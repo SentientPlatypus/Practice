@@ -41,13 +41,13 @@ int main() {
         fin >> amount >> nshare;
 
         if (nshare == 0) {
-            break;
+            continue;
         }
 
         int foreach = amount / nshare;
         int remainder = amount % nshare;
 
-        table[giver] -= (amount - remainder);
+        table[giver] += (-amount + remainder);
 
         for (int i = 0; i < nshare; i ++) {
             string reciever;
