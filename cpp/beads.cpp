@@ -19,7 +19,13 @@ int main() {
     int len;
     fin >> len;
 
-    const int necklen = len;
-    char necklace[4];
+    string beads;
+    fin >> beads;
 
+    cout << beads << endl;
+    const char* necklace = beads.c_str();
+    for (char c: beads) {
+        cout << c;
+    }
+    cout << endl;
 }
