@@ -22,7 +22,7 @@ fn newton_method(x:f64, thresh:f64) -> f64 {
     
     if (x - x_next).abs() < thresh {
         return x_next;
-    }
+    } 
     
     newton_method(x_next, thresh)
 }

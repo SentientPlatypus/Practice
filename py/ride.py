@@ -20,3 +20,4 @@ if getval(comet) % 47 == getval(group) % 47:
     fout.write("GO\n")
 else:
     fout.write("STAY\n")
+
