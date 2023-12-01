@@ -28,7 +28,4 @@ int main() {
         cout << c;
     }
     cout << endl;
-
-    
-
 }

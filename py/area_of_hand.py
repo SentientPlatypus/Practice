@@ -53,7 +53,6 @@ class AreaCalculator:
 
     def calculate_area(self) -> float:
         """Calculates the Area of the hand given the area of the paper from the image that it is drawn on in cm"""
-        """Calculates the Area of the hand given the area of the paper from the image that it is drawn on in cm"""
         paper_contour, paper_area = self.calculate_paper_area()
         hand_contour, hand_area = self.calculate_hand_area(paper_contour)
 

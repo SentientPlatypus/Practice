@@ -53,7 +53,6 @@ int main() {
                 }
                 currentday += 1;
                 currentday %= 7;
-
             }
         }
     }
