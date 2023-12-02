@@ -14,6 +14,14 @@ def parseFromFile(infile:str, outfile:str):
 
 
 
+def parse():
+    t = int(input())
+    nmonsters = int(input())
+    monsters = list(map(int, input().split()))
+    nRequiredForFusing = int(input())
+
+
+    return t, nmonsters, monsters, nRequiredForFusing
 
 def monsterMash(m:list, n) -> list:
 
@@ -25,16 +33,13 @@ def monsterMash(m:list, n) -> list:
             count += 1
             k += 1
 
-        print(f"i: {i}, count: {count}")
+
         if count >= n:
-            for k in range(count):
+            for k in range(min(n, count)):
                 m.pop(i)
-            i -= 1
-        i +=1
-        print(m)
-
-
-    print("list:")
+            i = 0
+        else:
+            i += 1
     print(m)
         
 
@@ -44,5 +49,5 @@ def monsterMash(m:list, n) -> list:
 
 
 if __name__ == "__main__":
-    t, nmonsters, monsters, nRequiredForFusing = parseFromFile("py\monster.in", "py\monster.out")
+    t, nmonsters, monsters, nRequiredForFusing = parse()
     monsterMash(monsters, nRequiredForFusing)
