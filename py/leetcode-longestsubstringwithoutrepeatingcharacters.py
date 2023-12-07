@@ -8,7 +8,7 @@ class Solution:
         while i < len(s):
             current = s[i]
             try:
-                i = d[current] + 1
+                i = d[current] + 1 
                 finalC = max(c, finalC)
                 d = {}
                 c = 0

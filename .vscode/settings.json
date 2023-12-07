@@ -4,6 +4,10 @@
         "xstring": "cpp",
         "iostream": "cpp",
         "iosfwd": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "algorithm": "cpp",
+        "xiosbase": "cpp",
+        "cmath": "cpp",
+        "deque": "cpp"
     }
 }
