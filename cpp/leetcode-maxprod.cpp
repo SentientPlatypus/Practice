@@ -1,6 +1,8 @@
+#include <vector>
+
 class Solution {
 public:
-    int maxProduct(vector<int>& nums) {
+    int maxProduct(std::vector<int>& nums) {
         int h = 0;
         int secondh = 0;
 
