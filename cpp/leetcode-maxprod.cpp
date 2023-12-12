@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 class Solution {
 public:
@@ -19,3 +20,24 @@ public:
         return (h-1)*(secondh-1);
     }
 };
+
+
+int main() {
+    Solution s;
+
+    std::vector<int> nums;
+    
+    int n;
+    std::cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        int num;
+        std::cin >> num;
+        nums.push_back(num);
+    }
+
+    std::cout << s.maxProduct(nums) << std::endl;
+
+
+    return 0;
+}
