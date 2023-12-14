@@ -1,1 +1,0 @@
-{"name":"Local: leetcode-dividenumbers","url":"w:\\Code\\Competitions\\Practice\\rust\\src\\leetcode-dividenumbers.rs","tests":[{"id":1679246864065,"input":"3 4","output":"3\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"w:\\Code\\Competitions\\Practice\\rust\\src\\leetcode-dividenumbers.rs","group":"local","local":true}
