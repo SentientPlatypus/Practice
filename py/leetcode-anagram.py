@@ -7,7 +7,6 @@ class Solution:
             except:
                 chardict[ch] = 1
         
-
         for ch in t:
             try:
                 chardict[ch] -= 1

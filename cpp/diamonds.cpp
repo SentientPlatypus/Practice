@@ -27,7 +27,7 @@ int main() {
     }
 
     int mx = 0;
-    int temp = 1;
+    int temp = 0;
     sort(d.begin(), d.end());
 
     for (int i = 1; i < N; i ++) {

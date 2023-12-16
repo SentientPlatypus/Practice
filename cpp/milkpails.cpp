@@ -9,7 +9,7 @@ LANG: C++
 #include <map>
 #include <fstream>
 #include <iostream>
-
+#include <algorithm>
 using namespace std;
 
 bool dp[1005];
