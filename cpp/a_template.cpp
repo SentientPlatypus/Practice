@@ -22,3 +22,5 @@ int main() {
     
     return 0;
 }
+
+// GIT_AUTHOR_DATE='Wed December 19 19:32:10 2023 -0400' GIT_COMMITTER_DATE='Wed December 19 19:32:10 2023 -0400' git commit -m 'cin in template'
