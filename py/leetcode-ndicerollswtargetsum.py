@@ -1,5 +1,5 @@
 class Solution:
-    self.m = 10 ** 9 + 7
+    m = 10 ** 9 + 7
     def numRollsToTarget(self, n: int, k: int, target: int) -> int:
         dp = [[-1] * (target + 1) for _ in range(n + 1)]
         return self.recursion(dp, n, k, target)
