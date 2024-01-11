@@ -17,12 +17,8 @@ int main() {
         bool pass = true;
         int counter = 0;
         for (char &c : s) {
-            if (c == '(') {
-                counter += 1;
-            }
-            else {
-                counter -= 1;
-            }
+            (c== '(')? counter++ : counter--;
+
             if (counter < 0) {
                 pass = false;
                 fout << "NO" << "\n";
