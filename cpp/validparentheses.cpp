@@ -26,7 +26,7 @@ int main() {
             }
         }
 
-        if (counter == 0) {
+        if (counter == 0) { 
             fout << "YES" << "\n";
         }
         else {

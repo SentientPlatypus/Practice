@@ -15,4 +15,4 @@ class Solution:
             else:
                 n[k] += 1
         
-        return not any(x != 1 for x in n.values())
+        return not any(x != 1 for x in n.values()) 
