@@ -6,11 +6,8 @@
 using namespace std;
 
 int main() {
-    ifstream fin("cards.in");
-    ofstream fout("cards.out");
-
     int N;
-    fin >> N;
+    cin >> N;
 
     queue<int> q;
 
@@ -25,6 +22,5 @@ int main() {
     }
 
     cout << q.front() << "\n";
-    fout << q.front() << "\n";
     return 0;
 }
