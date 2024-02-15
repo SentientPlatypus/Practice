@@ -26,10 +26,7 @@ def newmin(box):
 			for neighbor in neighborhood:
 				if neighbor not in visited:
 					toappend.append(neighbor)
-		days += 1
-		if not changed:
-			return -1
-			
+		
 		all_ripe = True
 		for i in range(M):
 			for j in range(N):
@@ -37,7 +34,12 @@ def newmin(box):
 					all_ripe = False
 					break
 		if all_ripe:
-			return days - 1
+			return days
+	
+		days += 1
+
+		if not changed:
+			return -1
 		
 		for cell in toappend:
 			q.append(cell)
