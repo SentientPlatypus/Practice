@@ -1,0 +1,1 @@
+{"name":"Local: adalovelace","url":"/mnt/d/Code/Competitions/Practice/wicc2024/adalovelace.py","tests":[{"id":1709489591142,"input":"55 1 1","output":"10"},{"id":1709489652054,"input":"100 10 7","output":"10"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/d/Code/Competitions/Practice/wicc2024/adalovelace.py","group":"local","local":true}

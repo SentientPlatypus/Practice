@@ -1,0 +1,1 @@
+{"name":"Local: monarch","url":"/mnt/d/Code/Competitions/Practice/wicc2024/monarch.py","tests":[{"id":1709488769057,"input":"Has a stripe","output":"Viceroy"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/mnt/d/Code/Competitions/Practice/wicc2024/monarch.py","group":"local","local":true}
