@@ -23,4 +23,4 @@ int main() {
 
     cout << q.front() << "\n";
     return 0;
-}.
+}
