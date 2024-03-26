@@ -1,5 +1,7 @@
 n = input()
-testcases = []
+shortcuts = []
 for i in range(n):
-    testcases.append(input())
+    shortcuts.append(input())
+
+for i in range()
 

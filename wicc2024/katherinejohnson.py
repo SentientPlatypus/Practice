@@ -20,7 +20,6 @@ def get_next(s):
 
 s = "42"
 for i in range(1, n):
-
     s, _, _ = get_next(s)
 
 print(s)

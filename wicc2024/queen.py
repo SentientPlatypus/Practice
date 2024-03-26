@@ -17,3 +17,4 @@ elif [x2, y2] in knightmoves:
     print("YES")
 else:
     print("NO")
+
