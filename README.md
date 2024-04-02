@@ -1,2 +1,2 @@
 # Practice
- problems 
+dev team, leetcode, competitions
