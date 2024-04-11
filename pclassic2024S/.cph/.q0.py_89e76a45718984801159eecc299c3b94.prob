@@ -1,0 +1,1 @@
+{"name":"Local: q0","url":"d:\\Code\\Competitions\\Practice\\pclassic2024S\\q0.py","tests":[{"id":1712417205801,"input":"2\n7\napple\n3 4 8 9\n13\nPclassic\n4 5 2 3","output":"8\napplea\n24\n14\nPclassica\n14"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\Competitions\\Practice\\pclassic2024S\\q0.py","group":"local","local":true}
