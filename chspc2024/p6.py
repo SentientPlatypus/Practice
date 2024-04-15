@@ -64,9 +64,23 @@ def checkorder(str):
         return False
     return True
 
-        
+def find_gaps(string, target="code", start=0, current="", gaps=[]):
+    if current == target:
+        gaps.append(start)
+        return
+    if start >= len(string) or len(target) - len(current) > len(string) - start:
+        return
 
+    find_gaps(string, target, start + 1, current, gaps)
 
+    if string[start] == target[len(current)]:
+        find_gaps(string, target, start + 1, current + string[start], gaps)
+
+    return gaps
+
+test_string = "xocder"
+
+print(find_gaps(test_string))
 
             
 
