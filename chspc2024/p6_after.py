@@ -13,13 +13,15 @@ for r in range(N - x + 1):
         fl.append(temp)
 
 
-#generate strengths
+
+
+
 def checkorder(str):
     q = ["e", "d", "o", "c"]
     for i in range(len(str)):
         if q:
             if str[i] == q[-1]:
-                q.pop()
+                q.pop(len(q) - 1)
         else:
             return True
     if q:
@@ -27,6 +29,7 @@ def checkorder(str):
     return True
 
 def gen_strength(s: str):
+    checked = set()
     strength = 0
     for start in range(len(s)):
         for end in range(start + 1, len(s) + 1):
