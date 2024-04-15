@@ -51,7 +51,9 @@ public:
         vector<int> l = getLeftLimits(heights);
         vector<int> r = getRightLimits(heights);
 
-        for (int i : v) {cout << i;}
+        for (int i : l) {cout << i;}
+        cout << endl;
+        for (int i : r) {cout << i;}
         cout << endl;
 
         for (int i = 0; i < heights.size(); i ++) {

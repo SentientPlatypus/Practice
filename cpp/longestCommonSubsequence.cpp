@@ -8,7 +8,7 @@ public:
         int m = text1.length();
         int n = text2.length();
 
-
+    
         std::vector<std::vector<int>> dp(m + 1, std::vector<int>(n + 1, 0));
 
         for (int i = 1; i <= m; ++i) {
