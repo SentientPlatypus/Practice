@@ -12,10 +12,6 @@ for r in range(N - x + 1):
                 temp += grid[r + xi][c + yi]
         fl.append(temp)
 
-
-
-
-
 def checkorder(str):
     q = ["e", "d", "o", "c"]
     for i in range(len(str)):
@@ -37,8 +33,6 @@ def gen_strength(s: str):
             if checkorder(substring):
                 strength += 1
     return strength
-
-
 
 for i, fn in enumerate(fl):
     strength = gen_strength(fn)
