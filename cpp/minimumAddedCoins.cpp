@@ -6,7 +6,7 @@ using namespace std;
 class Solution {
 public:
     int minimumAddedCoins(vector<int>& coins, int target) {
-        //[1, 4, 10], target = 19. X is obtainable if there is a subsequence of coins that adds to target.
+        //[1,4,10,5,7,19], target = 19. X is obtainable if there is a subsequence of coins that adds to target.
         sort(coins.begin(), coins.end());
         
         int m = 1;
