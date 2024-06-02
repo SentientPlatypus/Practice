@@ -1,8 +1,8 @@
 #include <vector>
 #include <iostream>
 #include <array>
+#include <queue>
 using namespace std;
-
 
 struct pos {
     int r;
@@ -17,33 +17,39 @@ public:
         for (int i = 1; i < grid.size() - 1; i++) {
             for (int j = 1; j < grid[0].size() - 1; j++) {
                 if (grid[i][j] == 0) {
-                    nclosed += 1;
-                    bfs(pos{i, j}, grid);
+                    if (bfs(pos{i, j}, grid)) {
+                        nclosed++;
+                    }
                 }
             }
         }
         return nclosed;
     }
 
-    vector<pos> neighbors(pos root, vector<vector<int>>& grid) {
-        vector<pos> result;
+    bool bfs(pos root, vector<vector<int>>& grid) {
+        bool isClosed = true;
+        vector<pos> queue = {root};
+
+        grid[root.r][root.c] = 1;
 
         constexpr array<pos, 4> directions = {{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}};
 
-        for (const auto& dir : directions) {
-            int nr = root.r + dir.r;
-            int nc = root.c + dir.c;
-            if (nr > 0 && nr < grid.size() - 1 && nc > 0 && nc < grid[0].size() - 1 && grid[nr][nc] == 0) {
-                result.push_back(pos{nr, nc});
+        while (!queue.empty()) {
+            pos current = queue.front();
+            queue.erase(queue.begin());
+
+            for (const auto& dir : directions) {
+                int nr = current.r + dir.r;
+                int nc = current.c + dir.c;
+
+                if (nr >= 0 && nr < grid.size() && nc >= 0 && nc < grid[0].size() && grid[nr][nc] == 0) {
+                    grid[nr][nc] = 1;
+                    queue.push_back({nr, nc});
+                } else if (nr < 0 || nr >= grid.size() || nc < 0 || nc >= grid[0].size()) {
+                    isClosed = false;
+                }
             }
         }
-        return result;
-    }
-
-    void bfs(pos root, vector<vector<int>>& grid) {
-        grid[root.r][root.c] = 1;
-        for (pos p: neighbors(root, grid)) {
-            bfs(p, grid);
-        }
+        return isClosed;
     }
 };
