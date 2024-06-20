@@ -4,8 +4,6 @@
 
 using namespace std;
 
-// Input: arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
-//Output: [2,2,2,1,4,3,3,9,6,7,19]
 class Solution {
 public:
     vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
@@ -16,20 +14,25 @@ public:
             mp[arr1[i]] += 1;
         }
 
-        int inserted = 0;
         for (int i = 0; i < arr2.size(); i++) {
-            if (mp[arr2[i]]) {
-                for (int k = 0; k < mp[arr2[i]]; k++) r.push_back(arr2[i]);
+            if (mp.find(arr2[i]) != mp.end()) {
+                for (int k = 0; k < mp[arr2[i]]; k++) {
+                    r.push_back(arr2[i]);
+                }
+                mp.erase(arr2[i]);
             }
         }
 
+        vector<int> remaining;
+        for (auto it = mp.begin(); it != mp.end(); ++it) {
+            for (int k = 0; k < it->second; k++) {
+                remaining.push_back(it->first);
+            }
+        }
 
-        
+        sort(remaining.begin(), remaining.end());
+        r.insert(r.end(), remaining.begin(), remaining.end());
 
-        
-        
-
-
-
+        return r;
     }
 };
