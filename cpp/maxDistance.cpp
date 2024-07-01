@@ -4,7 +4,7 @@
 using namespace std;
 
 class Solution {
-public:
+public: 
 
     bool canPlace(int x, vector<int> &position, int m) {
         int prevBallPos = position[0];
