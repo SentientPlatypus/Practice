@@ -13,33 +13,34 @@ struct ListNode {
 class Solution {
 public:
     vector<int> nodesBetweenCriticalPoints(ListNode* head) {
-        int mxd = -1;
+        if (!head || !head->next || !head->next->next) return {-1, -1};
+        
+        int f = -1, l = -1, i = 1;
         int mnd = __INT_MAX__;
-
-        int counter = 0;
-        int prev = head->val;
-
+        
+        ListNode* prev = head;
         head = head->next;
-        while (head->next != nullptr) {
-            
-            if ((prev < head->val && head->next->val < head->val) || (prev > head->val && head->next->val > head->val)) {
-                mxd = max(counter, mxd);
-                mnd = min(counter, mnd);
-                counter = 0;
-            } else {
-                counter ++;
+        ListNode* next = head->next;
+        
+        while (next) {
+            if ((head->val > prev->val && head->val > next->val) ||  (head->val < prev->val && head->val < next->val)) {
+                
+                if (f == -1) {
+                    f = i;
+                } else {
+                    mnd = min(mnd, i - l);
+                }
+                l = i;
             }
-            head = head->next;
-
+            prev = head;
+            head = next;
+            next = next->next;
+            i++;
         }
-
-        if (mxd != -1) {
-            if (mnd == __INT_MAX__) {
-                mnd = mxd;
-            } 
-        } else {
-            mnd = -1;
-        }
+        
+        if (f == l) return {-1, -1};
+        
+        int mxd = l - f;
         return {mnd, mxd};
     }
 };
