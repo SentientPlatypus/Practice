@@ -11,7 +11,6 @@ public:
     int solve(int drank, int fullBottles, int empty, int numExchange) {
         if (fullBottles + empty < numExchange) return fullBottles + drank;
 
-
         //drink
         drank += fullBottles;
         empty += fullBottles;
@@ -20,7 +19,6 @@ public:
         int newFullBottles = floor(empty / numExchange);
         empty -= newFullBottles * numExchange;
         fullBottles = newFullBottles;
-
 
         return solve(drank, newFullBottles, empty, numExchange);
     }
