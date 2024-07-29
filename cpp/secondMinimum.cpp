@@ -12,7 +12,7 @@ public:
             adj[edge[0]].push_back(edge[1]);
             adj[edge[1]].push_back(edge[0]);
         }
-
+    
         queue<pair<int, int>> q;
         vector<int> dist1(n + 1, -1), dist2(n + 1, -1);
         // Start with node 1, with its minimum distance.
