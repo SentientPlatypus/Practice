@@ -26,14 +26,13 @@ public:
         vector<int> square(9);
         int index = 0;
 
-        // Extract the 3x3 square
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
                 square[index++] = grid[r + i][c + j];
             }
         }
 
-        // Check for magic square
+
         int sum = square[0] + square[1] + square[2];
         if (sum != square[3] + square[4] + square[5] || 
             sum != square[6] + square[7] + square[8]) {
@@ -51,7 +50,6 @@ public:
             return false;
         }
 
-        // Check for distinct values from 1 to 9
         unordered_set<int> unique_values(square.begin(), square.end());
         if (unique_values.size() != 9) {
             return false;
