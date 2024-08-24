@@ -13,7 +13,7 @@ class Solution:
             n = n * den + num * d
             d *= den
         
-        common_divisor = gcd(n, d)
+        common_divisor = Solution.gcd(n, d)
         return f"{n // common_divisor}/{d // common_divisor}"
     
     def gcd(a, b):
