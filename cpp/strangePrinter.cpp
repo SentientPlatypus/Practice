@@ -33,8 +33,7 @@ private:
         for (int k = start + 1; k <= end; k++) {
             if (s[k] == s[start]) {
                 // If match found, try splitting the problem
-                int turnsWithMatch = minimumTurns(start, k - 1, s, memo) +
-                                     minimumTurns(k + 1, end, s, memo);
+                int turnsWithMatch = minimumTurns(start, k - 1, s, memo) + minimumTurns(k + 1, end, s, memo);
                 minTurns = min(minTurns, turnsWithMatch);
             }
         }
