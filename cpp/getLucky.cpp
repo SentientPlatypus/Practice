@@ -14,7 +14,6 @@ public:
         return converted;
     }
 
-
     int convert(string s) {
         int sum = 0;
         for (char c : s) {
