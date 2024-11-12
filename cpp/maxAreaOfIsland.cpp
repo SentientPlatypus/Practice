@@ -1,8 +1,6 @@
 #include <vector>
-#include <queue>
 #include <tuple>
-#include <set>
-
+#include <queue>
 using namespace std;
 
 
@@ -12,8 +10,8 @@ public:
         int m = 0;
         for (int r = 0; r < grid.size(); r++) {
             for (int c = 0; c < grid[0].size(); c++) {
-                if (!grid[r][c]) continue;                
-                m = max(dfs(make_tuple(r, c), grid), m);
+                if (!grid[r][c]) continue;    
+                m = max(m, dfs(make_tuple(r, c), grid));
             }
         }
         return m;
@@ -31,19 +29,20 @@ public:
         return ret;   
     }
 
-    int dfs(tuple<int, int> root, vector<vector<int>>& grid) {
+
+    int dfs(tuple<int,int> root, vector<vector<int>>& grid) {
         queue<tuple<int, int>> q;
         int total = 0;
 
-        q.push(root);  
+        q.push(root);
         grid[get<0>(root)][get<1>(root)] = 0;
 
         while (!q.empty()) {
-            tuple<int, int> c = q.front();
+            tuple<int,int> cur = q.front();
             q.pop();
-            total += 1;
+            total++;
 
-            for (tuple<int, int> t : neighbors(get<0>(c), get<1>(c), grid)) {
+            for (tuple<int,int> t : neighbors(get<0>(cur), get<1>(cur), grid)) {
                 if (!grid[get<0>(t)][get<1>(t)]) continue;
                 q.push(t);
                 grid[get<0>(t)][get<1>(t)] = 0;
@@ -51,4 +50,6 @@ public:
         }
         return total;
     }
+
+
 };
