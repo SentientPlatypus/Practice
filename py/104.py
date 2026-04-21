@@ -13,3 +13,27 @@ class Solution:
         rightDepth = self.maxDepth(root.right)
 
         return 1 + max(leftDepth, rightDepth)
+
+
+
+
+#### OR
+
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        
+        stk = [(root, 1)]
+        maxdepth = 0
+
+        while stk:
+            cur, depth = stk.pop()
+
+            if cur:
+                maxdepth = max(depth, maxdepth)
+
+                stk.append((cur.left, depth + 1))
+                stk.append((cur.right, depth + 1))
+
+        return maxdepth
