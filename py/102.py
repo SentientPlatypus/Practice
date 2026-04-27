@@ -1,43 +1,28 @@
 # Definition for a binary tree node.
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        levelMapping = {}
-        levelOrder = []
-
-
-        q = []
         res = []
 
-        if root:
-            res.append(root.val)
-            q.append(root)
-            levelMapping[root] = 0
-
+        q = deque()
+        q.append((root, 0))
 
         while q:
-            cur = q.pop(0)
+            cur, dpth = q.popleft()
+            if cur:
+                if dpth < len(res):
+                    res[dpth].append(cur.val)
+                else:
+                    res.append([cur.val])
+                
+                q.append((cur.left, dpth + 1))
+                q.append((cur.right, dpth + 1))
+
+        return res
+
+
         
-
-            if cur.left:
-                q.append(cur.left)
-                res.append(cur.left.val)
-                levelMapping[cur.left] = levelMapping[cur] + 1
-            if cur.right:
-                q.append(cur.right)
-                res.append(cur.right.val)
-                levelMapping[cur.right] = levelMapping[cur] + 1
-
-
-    
-        for node, lvl in levelMapping.items():
-            if len(levelOrder) <= lvl:
-                levelOrder.append([])
-            levelOrder[lvl].append(node.val)
-        
-        return levelOrder
