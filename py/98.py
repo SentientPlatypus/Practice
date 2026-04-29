@@ -6,19 +6,20 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        self.traversal = []
-        self.inOrder(root)
-        for i in range(1, len(self.traversal)):
-            if self.traversal[i] <= self.traversal[i - 1]:
-                return False
-        return True
+        self.prev = -float('inf')
+        return self.inOrder(root)
     
     def inOrder(self, root:Optional[TreeNode]):
         if not root:
-            return None
+            return True
 
-        self.inOrder(root.left)
-        self.traversal.append(root.val)
-        self.inOrder(root.right)
-
+        l = self.inOrder(root.left)
         
+        if not l:
+            return False
+        
+        if root.val <= self.prev:
+            return False
+        self.prev = root.val
+
+        return self.inOrder(root.right)
