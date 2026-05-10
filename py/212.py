@@ -11,6 +11,26 @@ class TrieNode():
             cur = cur.children[c]
         cur.end = True
 
+    def remove(self, word: str) -> bool:
+        def _recurse(node, word, depth):
+            if depth == len(word):
+                if not node.end:
+                    return False  
+                node.end = False
+                return len(node.children) == 0
+
+            char = word[depth]
+            if char not in node.children:
+                return False
+
+            should_delete_child = _recurse(node.children[char], word, depth + 1)
+            if should_delete_child:
+                del node.children[char]
+                return not node.end and len(node.children) == 0
+            return False
+
+        return _recurse(self, word, 0)
+
 class Solution:
     def neighbors(self, board:List[List[str]], r:int, c:int):
         res = []
@@ -20,7 +40,7 @@ class Solution:
                 res.append((rp, cp))
         return res
 
-    def dfs(self, board:List[List[str]], r:int, c:int, trie:TrieNode, path:str, res:set):
+    def dfs(self, board:List[List[str]], r:int, c:int, trie:TrieNode,trieroot:TrieNode, path:str, res:set):
         char = board[r][c]
         
         child = trie.children.get(char, None)
@@ -30,15 +50,14 @@ class Solution:
         path += char
         if child.end:
             res.add(path)
-        
+            trieroot.remove(path)
+
         #mark visited
         board[r][c] = None
         for rn, cn in self.neighbors(board, r, c):
             if board[rn][cn]:
-                self.dfs(board, rn, cn, child, path, res)
+                self.dfs(board, rn, cn, child, trieroot, path, res)
         board[r][c] = char
-        
-
         
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         trie = TrieNode()
@@ -52,5 +71,5 @@ class Solution:
 
         for r in range(N):
             for c in range(M):
-                self.dfs(board, r, c, trie, "", res)
+                self.dfs(board, r, c, trie, trie, "", res)
         return list(res)
