@@ -1,56 +1,56 @@
-class TrieNode:
+class TrieNode():
     def __init__(self):
-        self.children = [None for i in range(26)]
-        self.isEndOfWord = False
-
-def insert(root: TrieNode, word: str):
-    cur = root
-    for char in word:
-        idx = ord(char) - ord('a')
-        if not cur.children[idx]:
-            cur.children[idx] = TrieNode()
-        cur = cur.children[idx]
-    cur.isEndOfWord = True
+        self.children = {}
+        self.end = False
+    
+    def insert(self, word:str):
+        cur = self
+        for c in word:
+            if c not in cur.children:
+                cur.children[c] = TrieNode()
+            cur = cur.children[c]
+        cur.end = True
 
 class Solution:
     def neighbors(self, board:List[List[str]], r:int, c:int):
-        M = len(board)
-        N = len(board[0])
-        nbrs = []
-        for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-            nr, nc = r + dr, c + dc
-            if 0 <= nr and nr < M and 0 <= nc and nc < N:
-                nbrs.append((nr, nc))
-        return nbrs
+        res = []
+        candidates = [(r + 1, c), (r - 1, c), (r, c - 1), (r, c + 1)]
+        for rp, cp in candidates:
+            if 0 <= rp < len(board) and 0 <= cp < len(board[0]):
+                res.append((rp, cp))
+        return res
 
-    def dfs(self, board: List[List[str]], node:TrieNode, path:str, r:int, c:int, res:set):
+    def dfs(self, board:List[List[str]], r:int, c:int, trie:TrieNode, path:str, res:set):
         char = board[r][c]
-        idx = ord(char) - ord('a')
-        child = node.children[idx]
-
+        
+        child = trie.children.get(char, None)
         if not child:
-            return
+            return 
         
         path += char
-        if child.isEndOfWord:
-            res.add(str(path))
+        if child.end:
+            res.add(path)
         
-        board[r][c] = "_" #visited
-        for nr, nc in self.neighbors(board, r, c):
-            if board[nr][nc] != "_":
-                self.dfs(board, child, path, nr, nc, res)
+        #mark visited
+        board[r][c] = None
+        for rn, cn in self.neighbors(board, r, c):
+            if board[rn][cn]:
+                self.dfs(board, rn, cn, child, path, res)
         board[r][c] = char
+        
 
+        
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         trie = TrieNode()
         for w in words:
-            insert(trie, w)
-        M = len(board)
-        N = len(board[0])
+            trie.insert(w)
+
+        N = len(board)
+        M = len(board[0])
 
         res = set()
-        for r in range(M):
-            for c in range(N):
-                self.dfs(board, trie, "", r, c, res)
 
+        for r in range(N):
+            for c in range(M):
+                self.dfs(board, r, c, trie, "", res)
         return list(res)
