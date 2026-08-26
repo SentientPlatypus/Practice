@@ -34,3 +34,34 @@ class Solution:
 
         
 
+class Solution:
+    def build_graph(self, n:int, relations:List[List[int]]):
+        g = {node:set() for node in range(1, n + 1)}
+
+        for prereq, postreq in relations:
+            g[prereq].add(postreq)
+        
+        return g
+
+    def M(self, graph, root, time:List[int], memo):
+        "M(root) is the longest path in the graph that starts at i"
+        if root in memo:
+            return memo[root]
+
+        longestPath = 0
+        for neighbor in graph[root]:
+            longestPath = max(longestPath, self.M(graph, neighbor, time, memo))
+        
+        memo[root] = longestPath + time[root - 1]
+        
+        return memo[root]
+
+    def minimumTime(self, n: int, relations: List[List[int]], time: List[int]) -> int:
+        res = 0
+
+        graph = self.build_graph(n, relations)
+        memo = {} #stores longestPaths starting from a node.
+
+        for root in range(1, n + 1):
+            res = max(res, self.M(graph, root, time, memo))
+        return res
