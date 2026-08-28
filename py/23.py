@@ -4,6 +4,32 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    def mergeKLists(self, lists:List[Optional[ListNode]]) -> Optional[ListNode]:
+        minhp = []
+        res = ListNode()
+        cur = res
+
+        for i, listhd in enumerate(lists):
+            if listhd:
+                heappush(minhp, (listhd.val, i))
+        
+
+        while minhp:
+            minHdVal, minHdListI = heappop(minhp)
+            minHd = lists[minHdListI]
+
+            lists[minHdListI] = minHd.next
+
+            if minHd.next:
+                heappush(minhp, (minHd.next.val, minHdListI))
+            
+            #append to end of res
+            cur.next = minHd
+            cur = cur.next
+
+        return res.next
+
+
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         res = ListNode()
         cur = res
@@ -22,7 +48,7 @@ class Solution:
             cur.next = list2
         return res.next
 
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    def mergeKListOld(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         res = ListNode(-9999999999)
 
         for l in lists:
