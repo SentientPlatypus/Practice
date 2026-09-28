@@ -3,12 +3,7 @@ class Solution:
         N1 = len(word1)
         N2 = len(word2)
         dp  = [[9999 for _ in range(N2 + 1)] for _ in range(N1 + 1)]
-        print(dp)
 
-        #dp[i][j] = number of edits needed to turn word1[:i] into word2[:j]
-
-
-        #base cases
         for i in range(N1 + 1):
             dp[i][0] = i
         
@@ -26,3 +21,25 @@ class Solution:
 
 
         
+    def minDistanceMemo(self, word1: str, word2: str) -> int:
+        memo = {}
+        def M(i: int, j: int) -> int:
+            if i == len(word1):
+                return len(word2) - j
+            if j == len(word2):
+                return len(word1) - i
+
+            if (i, j) in memo:
+                return memo[(i, j)]
+            
+            if word1[i] == word2[j]:
+                return M(i + 1, j + 1)
+            
+            replace = M(i + 1, j + 1)
+            delete = M(i + 1, j)
+            insert = M(i, j + 1)
+            
+            memo[(i, j)] = 1 + min(replace, delete, insert)
+            return memo[(i, j)]
+
+        return M(0, 0)
